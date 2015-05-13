@@ -1,6 +1,5 @@
 # LeetCode
---------File Organization--------
-LeetCode
+##File Organization
 >>folder for each prob
 >>>>folder for python code
 >>>>folder for C++ code
