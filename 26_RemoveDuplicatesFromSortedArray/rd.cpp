@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-class Solution
+class Solution  //55ms
 {
 public:
 	//Solution(arguments);
@@ -36,8 +36,47 @@ public:
 	/* data */
 };
 
+
+class EraseOneEle  //64ms
+{
+public:
+	//EraseOne(arguments);
+	//~EraseOne();
+	int removeDuplicates(vector<int>& nums){
+		int len = nums.size();
+		if(len<2) return len;
+		for(int i=1;i<nums.size();i++){
+			if(nums[i]==nums[i-1]){
+				nums.erase(nums.begin()+i,nums.begin()+i+1);
+				i--;
+			}
+		}
+		return nums.size();
+	}
+	/* data */
+};
+
+class ArrayMethod   //36ms
+{
+public:
+	//ArrayMethod(arguments);
+	//~ArrayMethod();
+	int removeDuplicates(vector<int>& nums){
+		int len = nums.size();
+		if(len<2) return len;
+		int p = 1;
+		int q = 1;
+		for(;p<len;p++){
+			if(nums[p]!=nums[p-1]){
+				nums[q++] = nums[p];
+			}
+		}
+		return q;
+	}
+	/* data */
+};
 int main(){
-	Solution s;
+	ArrayMethod s;
 	vector<int> v;
 	int temp;
 	cout<<"input:"<<endl;
