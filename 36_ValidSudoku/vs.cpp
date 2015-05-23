@@ -2,6 +2,14 @@
 #include <iostream>
 using namespace std;
 
+/*It's a simple idea to check the input table 
+  following the given rule. That means you should
+  check the numbers of every row, col, square.
+  This is clear and easy to do. But if you put a little 
+  more notice into it, you will find that each number is 
+  visited 3 times.
+  So what matters is not a valid solution, but a good solution
+  you should definitly do more ANALISIS to your answer*/
 class Solution
 {
 public:
@@ -52,6 +60,28 @@ public:
 		return true;
 	}
 	/* data */
+};
+
+/*Thinking it from the DATA VIEW, you will find that
+  when a number is visited, its validness can be checked
+  according the three rules.*/
+class OneTimeSolution{
+public:
+	bool isValidSudoku(vector< vector<char> >& board){
+		int used1[9][9] = {0}, used2[9][9] = {0}, used3[9][9] = {0};
+
+        for(int i = 0; i < board.size(); ++ i)
+            for(int j = 0; j < board[i].size(); ++ j)
+                if(board[i][j] != '.')
+                {
+                    int num = board[i][j] - '0' - 1, k = i / 3 * 3 + j / 3;
+                    if(used1[i][num] || used2[j][num] || used3[k][num])
+                        return false;
+                    used1[i][num] = used2[j][num] = used3[k][num] = 1;
+                }
+
+        return true;
+	}
 };
 
 int main(){
