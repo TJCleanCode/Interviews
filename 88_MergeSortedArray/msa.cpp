@@ -6,18 +6,9 @@ using namespace std;
 class Solution {
 public:
 	void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-		vector<int> temp = nums1;
-		temp.push_back(INT_MAX);
-		nums2.push_back(INT_MAX);
-		int j(0),k(0);
-		for(int i=0; i<m+n-1; ++i) {
-			if(temp[j] <= nums2[k]) {
-				nums1[i] = temp[j];
-				j++;
-			}else {
-				nums1[i] = nums2[k];
-				k++;
-			}
+		int i(m-1),j(n-1),k(m+n-1);
+		while(j>=0) {
+		    nums1[k--] = i>=0&&nums1[i]>nums2[j]? nums1[i--]:nums2[j--];
 		}
 	}
 };
